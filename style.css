@@ -1,0 +1,189 @@
+body {
+  font-family: "Michroma", sans-serif;
+  margin: 0;
+  overflow: hidden;
+  color: #ffffff;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.frontpage {
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 300;
+  /* top: 0;
+    right: 0; */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 1);
+  backdrop-filter: blur(4px);
+  padding-top: 18em;
+  justify-content: center;
+  align-items: center;
+  display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  color: #ffffff;
+}
+
+
+.frontpage h1 {
+  
+    letter-spacing: 0.2em;
+  }
+
+
+.frontpage p {
+  font-size: 16px;
+  font-weight: light;
+  letter-spacing: 0.2em;
+}
+
+#progressBg {
+  margin: 6em auto;
+  width: 40%;
+  background-color:rgba(255, 255, 255, 0.3) ;
+  border-radius: 1px;
+}
+
+#progressBar {
+  width: 1%;
+  height: 4px;
+  border-radius: 1px;
+  background-color: #ffffff;
+}
+
+#enterBtn {
+  background-color: transparent;
+  color: white;
+  border: 0.5px solid white;
+  padding: 20px 48px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /* margin-top: 2em; */
+  cursor: pointer;
+  border-radius: 75px;
+  /* visibility: hidden;
+  opacity: 1; */
+}
+
+#enterBtn:hover {
+  background-color: #222;
+}
+
+#webTitle{
+    position: fixed;
+    top: 20px;
+    left: 80px;
+    letter-spacing: 0.2em;
+    
+}
+
+
+#poster-info {
+  color: #ffffff;
+  backdrop-filter: blur(10px);
+  text-align: center;
+  border-radius: 4px;
+  border: 0.3px solid white;
+  /* position: fixed;
+  bottom: 20px;
+  left: 20px; */
+
+  /* background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  padding: 20px;
+  width: 12%;
+  height: auto;
+  text-align: center; */
+  /* transition: all 300ms; */
+
+  /* transition: 300ms; */
+  padding-top: 20px;
+  width: 240px;
+  height: 360px;
+  /* background-color: white; */
+  /* box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.2); */
+  /* transition: transform 0.5s;
+  -webkit-transition: transform 0.5s;
+  -moz-transition: transform 0.5s;
+  -o-transition: transform 0.5s; */
+}
+
+#container {
+  perspective: 25px;
+  position: fixed;
+  left: 100px;
+  bottom: 120px;
+}
+
+#poster-info h3 {
+  font-size: 20px;
+}
+
+#poster-info p {
+  font-size: 12px;
+}
+
+.m-fadeOut {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 500ms linear, opacity 500ms;
+  transition-delay: 2s;
+}
+
+.m-fadeIn {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear, opacity 300ms;
+}
+
+/* slider  */
+
+#yearSlider{
+    position: fixed;
+    bottom:120px;
+    left:50%;
+    text-align: right;
+}
+
+#yearVal{
+    margin-bottom: 20px;
+    
+}
+
+input[type="range"] {
+    display: block;
+    -webkit-appearance: none;
+    background-color: #ccc;
+    width: 600px;
+    height: 2px;
+    border-radius: 1px;
+    margin: 0 auto;
+    outline: 0;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+  }​
+    input[type="range"]::-webkit-slider-thumb:hover {
+      background-color: #ffffff;
+      border: 2px solid #ffffff;
+    }
+    input[type="range"]::-webkit-slider-thumb:active {
+      transform: scale(1.2);
+ }
+
