@@ -284,7 +284,7 @@ let rangeValue = function(){
         gsap.to(unit, 1, {alpha: 1.0});
         
       }
-      yearVal.innerText='Slide to filter by years';
+      yearVal.innerText='Slide to filter by decades';
       break;
     case 1940:
       for (let i = 0; i < unitArray.length; i++) {
@@ -365,7 +365,7 @@ function toggleView(){
 
      gsap.to(unitArray, 0.5, {alpha: 0});
      gsap.set(unitArray, {visible: false});  
-     
+     wholeSlider.classList.remove('m-fadeIn');
      wholeSlider.classList.add("m-fadeOut");
      wholeSlider.style.transitionDelay='0s';
   }else{
@@ -374,7 +374,10 @@ function toggleView(){
 
     gsap.to(imageArray, 0.5, {alpha: 0});
      gsap.set(imageArray, {visible: false});  
+     wholeSlider.classList.remove('m-fadeOut');
      wholeSlider.classList.add("m-fadeIn");
+     silder.value=1930;
+     yearVal.innerText='Slide to filter by decades';
     //  silder.style.transitionDelay='0s'; 
   }
   viewVal=!viewVal;
