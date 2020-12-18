@@ -4,16 +4,18 @@
   <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/gsap-latest-beta.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.1.5/pixi.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/pixi-viewport@4.3.3/dist/viewport.min.js"></script>
-  <title>Scifi Movie Galaxy</title>
+  <title>Sci-fi Movie Galaxy</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Michroma&display=swap" rel="stylesheet">
+<script src="https://use.fontawesome.com/2ab9c71e3a.js"></script>
   <link rel="stylesheet" href="style.css">
+  
   
 </head>
 <body>
   <div class="frontpage">
-    <h1>Scifi Palette</h1>
-    <p>Explore scifi movie posters with machine learning </p>
+    <h1>Sci-fi Palette</h1>
+    <p>Explore sci-fi movie posters with machine learning </p>
     <div id="progressBg" >
       <div id="progressBar"></div>
     </div>
@@ -27,13 +29,27 @@
 </div>
 
 <div id="webTitle">
-  <h3>Scifi Palette</h3>
+  <h3>Sci-fi Palette</h3>
 </div>
 
 <div id="yearSlider">
   <p id="yearVal">Slide to filter by years</p>
   <input type="range" min="1930" max="2020" step="10" value="1930" >
 </div>
+
+<button id="toggleBtn" onclick="toggleView()"> Toggle View</button>
+
+
+<div id='toogle'>
+  <input type="checkbox" class="checkbox" id="checkbox">
+  <label for="checkbox" class="label">
+    <!-- <i class="fa fa-th" aria-hidden="true"></i> -->
+    <i class="fa fa-th-large" aria-hidden="true"></i>
+    <i class="fa fa-cloud" aria-hidden="true"></i>
+    
+     <div class="ball"></div>
+  </label>
+  </div>
 
 </body>
 

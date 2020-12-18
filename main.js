@@ -14,6 +14,8 @@ let enterBtn = document.getElementById('enterBtn');
 
 let posterDict = {};
 const unitArray = [];
+const imageArray = [];
+
 
 for(let i = 0; i < positions.length; i ++) {
   // const filename = positions[i].filename.replace(/\//g, '_');
@@ -80,22 +82,37 @@ app.loader.load((loader, resources) => {
   //loops through the properties of an object
   for(key in resources) {
 
-    // const imageSprite = new PIXI.Sprite(resources[key].texture)
-
     const clusterPos = posterDict[key].cluster_pos;
-
-    // imageSprite.x = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
-    // imageSprite.y = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
-
-    // imageSprite.anchor.x = 0.5;
-    // imageSprite.anchor.y = 0.5;
-
-    // imageSprite.interactive = true;
-    
-    //draw color circles
-    const circle = new PIXI.Graphics();
     const xPos = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
     const yPos = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
+    const toxPos=5 * app.renderer.width * (posterDict[key].grid_pos[0] * 2/40 - 1);
+    const toyPos=5 * app.renderer.width * (posterDict[key].grid_pos[1] * 2/40 - 1);
+    //load poster images
+     const imageSprite = new PIXI.Sprite(resources[key].texture)
+    imageSprite.x = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
+    imageSprite.y = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
+    imageSprite.anchor.x = 0.5;
+    imageSprite.anchor.y = 0.5;
+    imageSprite.height = imageSprite.height * 2;
+    imageSprite.width = imageSprite.width * 2;
+    imageSprite.umapXpos=xPos;
+    imageSprite.umapYpos=yPos;
+    imageSprite.targetXpos=toxPos;
+    imageSprite.targetYpos=toyPos;
+    //hide image
+    // gsap.to(imageSprite, 0, {alpha: 0});
+    // gsap.set(imageSprite, {visible: false});  
+  
+
+    imageSprite.interactive = true;
+    imageArray.push(imageSprite);
+    viewport.addChild(imageSprite);
+    gsap.to(imageArray, 0.5, {alpha: 0});
+    gsap.set(imageArray, {visible: false});   
+
+    //draw color circles
+    const circle = new PIXI.Graphics();
+    
     const radius = 160;
     circle.hitArea = new PIXI.Circle(xPos, yPos, radius);
     // circle.interactive = true;
@@ -115,13 +132,10 @@ app.loader.load((loader, resources) => {
     const texture = app.renderer.generateTexture(circle);
     const circleSprite = new PIXI.Sprite(texture);
 
-    circleSprite.x = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
-    circleSprite.y = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
-
-
+    circleSprite.x = xPos;
+    circleSprite.y = yPos;
     circleSprite.anchor.x = 0.5;
     circleSprite.anchor.y = 0.5;
-
     circleSprite.interactive = true;
 
      // create some extra properties that will control movement
@@ -133,12 +147,16 @@ app.loader.load((loader, resources) => {
      // create a random speed for the dude between 0 - 2
      circleSprite.speed = 2 + Math.random() * 2;
 
-     circleSprite.targetXpos=5 * app.renderer.width * (posterDict[key].grid_pos[0] * 2/40 - 1);
-     circleSprite.targetYpos=5 * app.renderer.width * (posterDict[key].grid_pos[1] * 2/40 - 1);
+     //save some values 
+     circleSprite.umapXpos=xPos;
+     circleSprite.umapYpos=yPos;
+     circleSprite.targetXpos=toxPos;
+     circleSprite.targetYpos=toyPos;
 
      circleSprite.year =posterDict[key].year;
     // console.log('year:'+circleSprite.year);
     unitArray.push(circleSprite);
+    
     viewport.addChild(circleSprite);
 
     const thisKey=key;
@@ -206,27 +224,40 @@ app.loader.load((loader, resources) => {
   }
 });
 
-let toggleLayout=false;
-document.addEventListener('keypress', animateUnit);
 
-function animateUnit(e) {
-  console.log(e.code);
+const checkbox = document.getElementById('checkbox');
+let toggleLayout=false;
+checkbox.addEventListener('change', () => {
   toggleLayout= !toggleLayout;
+  console.log(toggleLayout);
     // iterate through the units and update the positions
     for (let i = 0; i < unitArray.length; i++) {
         const unit = unitArray[i];
-        let tween = gsap.to(unit, {x: unit.targetXpos,y:unit.targetYpos ,duration: 6},);
+        const image = imageArray[i];
         if(toggleLayout){
-        
-          tween.play();
+           gsap.to(unit, {x: unit.targetXpos,y:unit.targetYpos, duration: 6});
+           gsap.to(image, {x: image.targetXpos,y:image.targetYpos, duration: 6});
+          // tween.play();
+          console.log('move');
         }
         else{
-          tween.reverse();
+          gsap.to(unit, {x: unit.umapXpos, y:unit.umapYpos, duration: 6});
+          gsap.to(image, {x: image.umapXpos, y:image.umapYpos, duration: 6});
+          // tween.reverse();
+          console.log('return');
         }
     }
  
+});
+
+
+// document.addEventListener('keypress', animateUnit);
+
+// function animateUnit(e) {
+//   console.log(e.code);
   
-}
+  
+// }
 
 
 //Frontpage
@@ -238,10 +269,11 @@ function enterpage(){
 }
 
 //Yearslider
+let wholeSlider=document.getElementById('yearSlider');
 let silder = document.querySelector('input[type="range"]');
 let yearVal =document.getElementById('yearVal');
-let rangeValue = function(){
 
+let rangeValue = function(){
   let selectedYear = parseInt(silder.value);
   console.log('selectedYear:'+selectedYear);
   switch(selectedYear) {
@@ -250,6 +282,7 @@ let rangeValue = function(){
         const unit = unitArray[i];
         gsap.set(unit, {visible: true});
         gsap.to(unit, 1, {alpha: 1.0});
+        
       }
       yearVal.innerText='Slide to filter by years';
       break;
@@ -314,10 +347,38 @@ let rangeValue = function(){
     //   }
     
 
-
-
 silder.addEventListener("input", rangeValue);
 
+let viewVal=true;
+//ToggleView
+function toggleView(){
+  
+  console.log('toggleView');
+  if(viewVal){
+    // for (let i = 0; i < imageArray.length; i++) {
+    //   const image = imageArray[i];
+    //   gsap.set(image, {visible: true});
+    //   gsap.to(image, 0.5, {alpha: 1.0});
+    // }
+    gsap.set(imageArray, {visible: true});
+    gsap.to(imageArray, 0.5, {alpha: 1.0});
+
+     gsap.to(unitArray, 0.5, {alpha: 0});
+     gsap.set(unitArray, {visible: false});  
+     
+     wholeSlider.classList.add("m-fadeOut");
+     wholeSlider.style.transitionDelay='0s';
+  }else{
+    gsap.set(unitArray, {visible: true});
+    gsap.to(unitArray, 0.5, {alpha: 1.0});
+
+    gsap.to(imageArray, 0.5, {alpha: 0});
+     gsap.set(imageArray, {visible: false});  
+     wholeSlider.classList.add("m-fadeIn");
+    //  silder.style.transitionDelay='0s'; 
+  }
+  viewVal=!viewVal;
+}
 
 //card perspective view
 // https://codepen.io/waynecai1213/pen/abmwzRM

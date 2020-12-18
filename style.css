@@ -1,3 +1,8 @@
+/* this would affect the toggle */
+*{
+    box-sizing: border-box;
+}
+
 body {
   font-family: "Michroma", sans-serif;
   margin: 0;
@@ -69,6 +74,7 @@ canvas {
   /* margin-top: 2em; */
   cursor: pointer;
   border-radius: 75px;
+  outline:none;
   /* visibility: hidden;
   opacity: 1; */
 }
@@ -76,6 +82,8 @@ canvas {
 #enterBtn:hover {
   background-color: #222;
 }
+
+
 
 #webTitle{
     position: fixed;
@@ -144,12 +152,37 @@ canvas {
   transition: visibility 0s linear, opacity 300ms;
 }
 
+
+/* toggle view button */
+#toggleBtn{
+    font-family: inherit;
+    background-color: transparent;
+    color: white;
+    border: 0.5px solid white;
+    padding: 12px 18px;
+    text-align: center;
+    text-decoration: none;
+    outline:none;
+    /* display: inline-block; */
+    font-size: 12px;
+    /* margin-top: 2em; */
+    cursor: pointer;
+    border-radius: 75px;
+    position: fixed;
+    right:80px;
+    top: 30px;
+}
+
+#toggleBtn:hover {
+    background-color: #222;
+  }
+
 /* slider  */
 
 #yearSlider{
     position: fixed;
     bottom:120px;
-    left:50%;
+    right:80px;
     text-align: right;
 }
 
@@ -187,3 +220,56 @@ input[type="range"] {
       transform: scale(1.2);
  }
 
+
+ /* Toggle  grid*/
+ /* https://codepen.io/cristianvii/pen/WNGpOZx */
+ #toogle {
+    position: fixed;
+   right: 80px;
+   top: 120px;;
+}
+
+ .checkbox {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox:checked + .label .ball {
+    transform: translateX(30px);
+}
+
+.label {
+    /* background-color:rgba(255, 255, 255, 0.3) ; */
+    border: 1px solid #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50px;
+    position: relative;
+    padding: 5px;
+    height: 32px;
+    width: 62px;
+   
+}
+
+.ball {
+    background-color: #fff;
+    border-radius: 50%;
+    position: absolute;
+   
+    left: 2px;
+    height: 26px;
+    width: 26px;
+    transition: transform 0.3s linear;
+}
+
+.fa{
+    position: relative;
+    padding:0 4px;
+    /* font-size:12em; */
+    -webkit-text-stroke-color: #fff;
+   
+-webkit-text-stroke-width: 1px;
+
+    color:transparent;
+}
