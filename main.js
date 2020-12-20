@@ -72,7 +72,7 @@ viewport
     .pinch()
     .wheel({ smooth: 3 })
     .decelerate()
-    .clampZoom({ minWidth: 500, minHeight: 500,maxWidth:50000,maxHeight:50000})
+    .clampZoom({ minWidth: 500, minHeight: 500,maxWidth:80000,maxHeight:80000})
 
 
 //call a function  when the image has finished loading:
@@ -83,14 +83,14 @@ app.loader.load((loader, resources) => {
   for(key in resources) {
 
     const clusterPos = posterDict[key].cluster_pos;
-    const xPos = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
-    const yPos = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
+    const xPos = 12 * app.renderer.width * (clusterPos[0] * 2 - 1);
+    const yPos = 8 * app.renderer.width * (clusterPos[1] * 2 - 1);
     const toxPos=5 * app.renderer.width * (posterDict[key].grid_pos[0] * 2/40 - 1);
     const toyPos=5 * app.renderer.width * (posterDict[key].grid_pos[1] * 2/40 - 1);
     //load poster images
      const imageSprite = new PIXI.Sprite(resources[key].texture)
-    imageSprite.x = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
-    imageSprite.y = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
+    imageSprite.x = 12 * app.renderer.width * (clusterPos[0] * 2 - 1);
+    imageSprite.y = 8 * app.renderer.width * (clusterPos[1] * 2 - 1);
     imageSprite.anchor.x = 0.5;
     imageSprite.anchor.y = 0.5;
     imageSprite.height = imageSprite.height * 2;
