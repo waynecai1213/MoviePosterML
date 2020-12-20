@@ -83,13 +83,13 @@ app.loader.load((loader, resources) => {
   for(key in resources) {
 
     const clusterPos = posterDict[key].cluster_pos;
-    const xPos = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
+    const xPos = 8 * app.renderer.width * (clusterPos[0] * 2 - 1);
     const yPos = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
     const toxPos=5 * app.renderer.width * (posterDict[key].grid_pos[0] * 2/40 - 1);
     const toyPos=5 * app.renderer.width * (posterDict[key].grid_pos[1] * 2/40 - 1);
     //load poster images
      const imageSprite = new PIXI.Sprite(resources[key].texture)
-    imageSprite.x = 5 * app.renderer.width * (clusterPos[0] * 2 - 1);
+    imageSprite.x = 8 * app.renderer.width * (clusterPos[0] * 2 - 1);
     imageSprite.y = 5 * app.renderer.width * (clusterPos[1] * 2 - 1);
     imageSprite.anchor.x = 0.5;
     imageSprite.anchor.y = 0.5;
