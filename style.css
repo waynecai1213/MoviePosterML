@@ -1,6 +1,8 @@
+@charset "UTF-8";
 /* this would affect the toggle */
-*{
-    box-sizing: border-box;
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
@@ -24,23 +26,26 @@ canvas {
   /* top: 0;
     right: 0; */
   text-align: center;
-  background-color: rgba(0, 0, 0, 1);
-  backdrop-filter: blur(4px);
+  background-color: black;
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
   padding-top: 18em;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   display: block;
   opacity: 1;
+  -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
   color: #ffffff;
 }
 
-
 .frontpage h1 {
-  
-    letter-spacing: 0.2em;
-  }
-
+  letter-spacing: 0.2em;
+}
 
 .frontpage p {
   font-size: 16px;
@@ -48,10 +53,308 @@ canvas {
   letter-spacing: 0.2em;
 }
 
+/* Gitch effect  */
+.glitch {
+  color: white;
+  position: relative;
+  width: 360px;
+  margin: 0 auto;
+}
+
+@-webkit-keyframes noise-anim {
+  0% {
+    clip: rect(37px, 9999px, 51px, 0);
+  }
+  5% {
+    clip: rect(3px, 9999px, 12px, 0);
+  }
+  10% {
+    clip: rect(43px, 9999px, 10px, 0);
+  }
+  15% {
+    clip: rect(81px, 9999px, 17px, 0);
+  }
+  20% {
+    clip: rect(97px, 9999px, 20px, 0);
+  }
+  25% {
+    clip: rect(47px, 9999px, 25px, 0);
+  }
+  30% {
+    clip: rect(77px, 9999px, 74px, 0);
+  }
+  35% {
+    clip: rect(18px, 9999px, 22px, 0);
+  }
+  40% {
+    clip: rect(45px, 9999px, 46px, 0);
+  }
+  45% {
+    clip: rect(66px, 9999px, 47px, 0);
+  }
+  50% {
+    clip: rect(39px, 9999px, 35px, 0);
+  }
+  55% {
+    clip: rect(12px, 9999px, 92px, 0);
+  }
+  60% {
+    clip: rect(78px, 9999px, 100px, 0);
+  }
+  65% {
+    clip: rect(18px, 9999px, 8px, 0);
+  }
+  70% {
+    clip: rect(71px, 9999px, 68px, 0);
+  }
+  75% {
+    clip: rect(52px, 9999px, 7px, 0);
+  }
+  80% {
+    clip: rect(20px, 9999px, 97px, 0);
+  }
+  85% {
+    clip: rect(45px, 9999px, 61px, 0);
+  }
+  90% {
+    clip: rect(14px, 9999px, 43px, 0);
+  }
+  95% {
+    clip: rect(87px, 9999px, 19px, 0);
+  }
+  100% {
+    clip: rect(23px, 9999px, 19px, 0);
+  }
+}
+
+@keyframes noise-anim {
+  0% {
+    clip: rect(37px, 9999px, 51px, 0);
+  }
+  5% {
+    clip: rect(3px, 9999px, 12px, 0);
+  }
+  10% {
+    clip: rect(43px, 9999px, 10px, 0);
+  }
+  15% {
+    clip: rect(81px, 9999px, 17px, 0);
+  }
+  20% {
+    clip: rect(97px, 9999px, 20px, 0);
+  }
+  25% {
+    clip: rect(47px, 9999px, 25px, 0);
+  }
+  30% {
+    clip: rect(77px, 9999px, 74px, 0);
+  }
+  35% {
+    clip: rect(18px, 9999px, 22px, 0);
+  }
+  40% {
+    clip: rect(45px, 9999px, 46px, 0);
+  }
+  45% {
+    clip: rect(66px, 9999px, 47px, 0);
+  }
+  50% {
+    clip: rect(39px, 9999px, 35px, 0);
+  }
+  55% {
+    clip: rect(12px, 9999px, 92px, 0);
+  }
+  60% {
+    clip: rect(78px, 9999px, 100px, 0);
+  }
+  65% {
+    clip: rect(18px, 9999px, 8px, 0);
+  }
+  70% {
+    clip: rect(71px, 9999px, 68px, 0);
+  }
+  75% {
+    clip: rect(52px, 9999px, 7px, 0);
+  }
+  80% {
+    clip: rect(20px, 9999px, 97px, 0);
+  }
+  85% {
+    clip: rect(45px, 9999px, 61px, 0);
+  }
+  90% {
+    clip: rect(14px, 9999px, 43px, 0);
+  }
+  95% {
+    clip: rect(87px, 9999px, 19px, 0);
+  }
+  100% {
+    clip: rect(23px, 9999px, 19px, 0);
+  }
+}
+
+.glitch:after {
+  content: attr(data-text);
+  position: absolute;
+  left: 2px;
+  text-shadow: -1px 0 red;
+  top: 0;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim 2s infinite linear alternate-reverse;
+}
+
+@-webkit-keyframes noise-anim-2 {
+  0% {
+    clip: rect(43px, 9999px, 8px, 0);
+  }
+  5% {
+    clip: rect(8px, 9999px, 84px, 0);
+  }
+  10% {
+    clip: rect(61px, 9999px, 3px, 0);
+  }
+  15% {
+    clip: rect(25px, 9999px, 32px, 0);
+  }
+  20% {
+    clip: rect(88px, 9999px, 84px, 0);
+  }
+  25% {
+    clip: rect(100px, 9999px, 55px, 0);
+  }
+  30% {
+    clip: rect(36px, 9999px, 87px, 0);
+  }
+  35% {
+    clip: rect(80px, 9999px, 8px, 0);
+  }
+  40% {
+    clip: rect(80px, 9999px, 80px, 0);
+  }
+  45% {
+    clip: rect(71px, 9999px, 17px, 0);
+  }
+  50% {
+    clip: rect(55px, 9999px, 29px, 0);
+  }
+  55% {
+    clip: rect(41px, 9999px, 81px, 0);
+  }
+  60% {
+    clip: rect(88px, 9999px, 21px, 0);
+  }
+  65% {
+    clip: rect(27px, 9999px, 55px, 0);
+  }
+  70% {
+    clip: rect(69px, 9999px, 59px, 0);
+  }
+  75% {
+    clip: rect(60px, 9999px, 19px, 0);
+  }
+  80% {
+    clip: rect(54px, 9999px, 15px, 0);
+  }
+  85% {
+    clip: rect(67px, 9999px, 70px, 0);
+  }
+  90% {
+    clip: rect(47px, 9999px, 21px, 0);
+  }
+  95% {
+    clip: rect(17px, 9999px, 9px, 0);
+  }
+  100% {
+    clip: rect(55px, 9999px, 65px, 0);
+  }
+}
+
+@keyframes noise-anim-2 {
+  0% {
+    clip: rect(43px, 9999px, 8px, 0);
+  }
+  5% {
+    clip: rect(8px, 9999px, 84px, 0);
+  }
+  10% {
+    clip: rect(61px, 9999px, 3px, 0);
+  }
+  15% {
+    clip: rect(25px, 9999px, 32px, 0);
+  }
+  20% {
+    clip: rect(88px, 9999px, 84px, 0);
+  }
+  25% {
+    clip: rect(100px, 9999px, 55px, 0);
+  }
+  30% {
+    clip: rect(36px, 9999px, 87px, 0);
+  }
+  35% {
+    clip: rect(80px, 9999px, 8px, 0);
+  }
+  40% {
+    clip: rect(80px, 9999px, 80px, 0);
+  }
+  45% {
+    clip: rect(71px, 9999px, 17px, 0);
+  }
+  50% {
+    clip: rect(55px, 9999px, 29px, 0);
+  }
+  55% {
+    clip: rect(41px, 9999px, 81px, 0);
+  }
+  60% {
+    clip: rect(88px, 9999px, 21px, 0);
+  }
+  65% {
+    clip: rect(27px, 9999px, 55px, 0);
+  }
+  70% {
+    clip: rect(69px, 9999px, 59px, 0);
+  }
+  75% {
+    clip: rect(60px, 9999px, 19px, 0);
+  }
+  80% {
+    clip: rect(54px, 9999px, 15px, 0);
+  }
+  85% {
+    clip: rect(67px, 9999px, 70px, 0);
+  }
+  90% {
+    clip: rect(47px, 9999px, 21px, 0);
+  }
+  95% {
+    clip: rect(17px, 9999px, 9px, 0);
+  }
+  100% {
+    clip: rect(55px, 9999px, 65px, 0);
+  }
+}
+
+.glitch:before {
+  content: attr(data-text);
+  position: absolute;
+  left: -2px;
+  text-shadow: 1px 0 blue;
+  top: 0;
+  color: white;
+  background: black;
+  overflow: hidden;
+  clip: rect(0, 900px, 0, 0);
+  animation: noise-anim-2 3s infinite linear alternate-reverse;
+}
+
 #progressBg {
   margin: 6em auto;
   width: 40%;
-  background-color:rgba(255, 255, 255, 0.3) ;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 1px;
 }
 
@@ -74,7 +377,7 @@ canvas {
   /* margin-top: 2em; */
   cursor: pointer;
   border-radius: 75px;
-  outline:none;
+  outline: none;
   /* visibility: hidden;
   opacity: 1; */
 }
@@ -83,27 +386,23 @@ canvas {
   background-color: #222;
 }
 
-
-
-#webTitle{
-    position: fixed;
-    top: 20px;
-    left: 80px;
-    letter-spacing: 0.2em;
-    
+#webTitle {
+  position: fixed;
+  top: 20px;
+  left: 80px;
+  letter-spacing: 0.2em;
 }
-
 
 #poster-info {
   color: #ffffff;
-  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
   text-align: center;
   border-radius: 4px;
   border: 0.3px solid white;
   /* position: fixed;
   bottom: 20px;
   left: 20px; */
-
   /* background-color: rgba(0, 0, 0, 0.4);
   border-radius: 4px;
   padding: 20px;
@@ -111,7 +410,6 @@ canvas {
   height: auto;
   text-align: center; */
   /* transition: all 300ms; */
-
   /* transition: 300ms; */
   padding-top: 20px;
   width: 240px;
@@ -125,7 +423,8 @@ canvas {
 }
 
 #container {
-  perspective: 25px;
+  -webkit-perspective: 25px;
+          perspective: 25px;
   position: fixed;
   left: 100px;
   bottom: 120px;
@@ -142,134 +441,145 @@ canvas {
 .m-fadeOut {
   visibility: hidden;
   opacity: 0;
+  -webkit-transition: visibility 500ms linear, opacity 500ms;
   transition: visibility 500ms linear, opacity 500ms;
-  transition-delay: 2s;
+  -webkit-transition-delay: 2s;
+          transition-delay: 2s;
 }
 
 .m-fadeIn {
   visibility: visible;
   opacity: 1;
+  -webkit-transition: visibility 0s linear, opacity 300ms;
   transition: visibility 0s linear, opacity 300ms;
 }
 
-
 /* toggle view button */
-#toggleBtn{
-    font-family: inherit;
-    background-color: transparent;
-    color: white;
-    border: 0.5px solid white;
-    padding: 12px 18px;
-    text-align: center;
-    text-decoration: none;
-    outline:none;
-    /* display: inline-block; */
-    font-size: 12px;
-    /* margin-top: 2em; */
-    cursor: pointer;
-    border-radius: 75px;
-    position: fixed;
-    right:80px;
-    top: 30px;
+#toggleBtn {
+  font-family: inherit;
+  background-color: transparent;
+  color: white;
+  border: 0.5px solid white;
+  padding: 12px 18px;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  /* display: inline-block; */
+  font-size: 12px;
+  /* margin-top: 2em; */
+  cursor: pointer;
+  border-radius: 75px;
+  position: fixed;
+  right: 80px;
+  top: 30px;
 }
 
 #toggleBtn:hover {
-    background-color: #222;
-  }
-
-/* slider  */
-
-#yearSlider{
-    position: fixed;
-    bottom:120px;
-    right:80px;
-    text-align: right;
+  background-color: #222;
 }
 
-#yearVal{
-    margin-bottom: 20px;
-    
+/* slider  */
+#yearSlider {
+  position: fixed;
+  bottom: 120px;
+  right: 80px;
+  text-align: right;
+}
+
+#yearVal {
+  margin-bottom: 20px;
 }
 
 input[type="range"] {
-    display: block;
-    -webkit-appearance: none;
-    background-color: #ccc;
-    width: 600px;
-    height: 2px;
-    border-radius: 1px;
-    margin: 0 auto;
-    outline: 0;
-  }
-
-  input[type="range"]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    background-color: #ffffff;
-    width: 15px;
-    height: 15px;
-    border-radius: 50%;
-    border: 2px solid #ffffff;
-    cursor: pointer;
-    transition: .3s ease-in-out;
-  }​
-    input[type="range"]::-webkit-slider-thumb:hover {
-      background-color: #ffffff;
-      border: 2px solid #ffffff;
-    }
-    input[type="range"]::-webkit-slider-thumb:active {
-      transform: scale(1.2);
- }
-
-
- /* Toggle  grid*/
- /* https://codepen.io/cristianvii/pen/WNGpOZx */
- #toogle {
-    position: fixed;
-   right: 80px;
-   top: 120px;;
+  display: block;
+  -webkit-appearance: none;
+  background-color: #ccc;
+  width: 600px;
+  height: 2px;
+  border-radius: 1px;
+  margin: 0 auto;
+  outline: 0;
 }
 
- .checkbox {
-    opacity: 0;
-    position: absolute;
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #ffffff;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+
+​
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+/* Toggle  grid*/
+/* https://codepen.io/cristianvii/pen/WNGpOZx */
+#toogle {
+  position: fixed;
+  right: 80px;
+  top: 120px;
+}
+
+.checkbox {
+  opacity: 0;
+  position: absolute;
 }
 
 .checkbox:checked + .label .ball {
-    transform: translateX(30px);
+  -webkit-transform: translateX(30px);
+          transform: translateX(30px);
 }
 
 .label {
-    /* background-color:rgba(255, 255, 255, 0.3) ; */
-    border: 1px solid #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 50px;
-    position: relative;
-    padding: 5px;
-    height: 32px;
-    width: 62px;
-   
+  /* background-color:rgba(255, 255, 255, 0.3) ; */
+  border: 1px solid #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border-radius: 50px;
+  position: relative;
+  padding: 5px;
+  height: 32px;
+  width: 62px;
 }
 
 .ball {
-    background-color: #fff;
-    border-radius: 50%;
-    position: absolute;
-   
-    left: 2px;
-    height: 26px;
-    width: 26px;
-    transition: transform 0.3s linear;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: 2px;
+  height: 26px;
+  width: 26px;
+  -webkit-transition: -webkit-transform 0.3s linear;
+  transition: -webkit-transform 0.3s linear;
+  transition: transform 0.3s linear;
+  transition: transform 0.3s linear, -webkit-transform 0.3s linear;
 }
 
-.fa{
-    position: relative;
-    padding:0 4px;
-    /* font-size:12em; */
-    -webkit-text-stroke-color: #fff;
-   
--webkit-text-stroke-width: 1px;
-
-    color:transparent;
+.fa {
+  position: relative;
+  padding: 0 4px;
+  /* font-size:12em; */
+  -webkit-text-stroke-color: #fff;
+  -webkit-text-stroke-width: 1px;
+  color: transparent;
 }
+/*# sourceMappingURL=style.css.map */
